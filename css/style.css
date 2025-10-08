@@ -83,3 +83,17 @@
   border-radius: 8px;
 }
 
+/* Для страницы Git убираем sidebar */
+.page-git .layout {
+  display: block; 
+  gap: 0;         
+}
+
+.page-git .main {
+  width: 100%; 
+}
+
+.page-git .sidebar {
+  display: none; 
+}
+

@@ -1,0 +1,40 @@
+/* Header */
+.header {
+  background-color: #f8f9fa; 
+  padding: 20px 0;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Логотип */
+.header__logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  text-decoration: none;
+}
+
+/* Навигация */
+.nav__list {
+  display: flex;
+  gap: 24px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav__list a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.nav__list a:hover {
+  color: #007BFF; 
+}

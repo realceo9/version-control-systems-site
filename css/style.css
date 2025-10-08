@@ -47,17 +47,19 @@
   font-weight: 500;
   font-size: 16px;
   transition: all 0.3s ease;
-  padding: 5px 8px;
-  border-radius: 4px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  display: inline-block;
 }
 
 .nav__list a:hover {
-  color: #007BFF;
+  color: #0056b3;
   background-color: rgba(0,123,255,0.1);
+  transform: scale(1.08);
 }
 
 .nav__list a.active {
-  color: #007BFF;
+  color: #0056b3;
   font-weight: 600;
 }
 

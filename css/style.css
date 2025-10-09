@@ -73,7 +73,7 @@
 /* ---------------------------------- */
 /* Изменение цвета code blocks в разделе "Основные команды Git" */
 .main code {
-  color: #74a3d4; /* совпадает с hover-ссылками навигации */
+  color: #74a3d4;
   background-color: transparent;
   padding: 0;
   border-radius: 0;
@@ -145,4 +145,18 @@
 .page-git .sidebar {
   display: none; 
 }
+
+/* Таблицы */
+.table-wrapper {
+  overflow-x: auto;
+  margin-top: 1.5em;
+}
+
+.table-caption {
+  font-style: italic;
+  text-align: center;
+  margin-top: 0.5em;
+  color: #b4b4b4;
+}
+
 

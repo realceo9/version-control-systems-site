@@ -96,10 +96,10 @@
 /* Sidebar */
 .sidebar {
   flex: 1;
-  background-color: #ffffff; /* белый фон */
+  background-color: #ffffff; 
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.08); /* лёгкая тень */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08); 
 }
 
 /* Заголовок */
@@ -129,22 +129,10 @@
 
 .sidebar a:hover {
   text-decoration: underline;
-  transform: scale(1.03); /* лёгкое увеличение при hover */
+  transform: scale(1.03); 
 }
 
-/* Для страницы Git убираем sidebar */
-.page-git .layout {
-  display: block; 
-  gap: 0;         
-}
 
-.page-git .main {
-  width: 100%; 
-}
-
-.page-git .sidebar {
-  display: none; 
-}
 
 /* Таблицы */
 .table-wrapper {
@@ -158,5 +146,27 @@
   margin-top: 0.5em;
   color: #b4b4b4;
 }
+
+
+/* Responsive video wrapper — адаптивное встраивание YouTube */
+.video-wrapper {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; 
+  height: 0;
+  overflow: hidden;
+  margin-top: 12px;
+  margin-bottom: 18px;
+}
+
+.video-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
 
 

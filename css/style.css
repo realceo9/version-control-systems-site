@@ -186,5 +186,21 @@
   border: 0;
 }
 
+/* Текст в main: выравнивание по ширине */
+.main p,
+.main ul,
+.main ol,
+.main li,
+.main blockquote {
+  text-align: justify;
+  line-height: 1.6;
+}
+
+.main__features li {
+  text-align: justify;
+  line-height: 1.4;
+}
+
+
 
 

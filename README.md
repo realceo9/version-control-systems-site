@@ -41,7 +41,7 @@
 ## Как запустить проект локально
 1. Склонируйте репозиторий:
    ```bash
-   git clone https://github.com/<realceo9>/<version-control-systems-site>.git
+   git clone https://github.com/realceo9/version-control-systems-site.git
 
 2. Откройте файл index.html в браузере.
     (Проект работает без сборки — всё на чистом HTML, CSS и JS.)

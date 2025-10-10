@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Git Cheat Sheet</title>
+
+  <!-- Water.css -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="page-cheatsheet">
+  <header class="header">
+    <div class="container header__inner">
+      <a href="index.html" class="header__logo">Системы контроля версий</a>
+      <nav class="nav">
+        <ul class="nav__list">
+          <li><a href="git.html">Git</a></li>
+          <li><a href="svn.html">SVN</a></li>
+          <li><a href="comparison.html">Сравнение</a></li>
+          <li><a href="tips.html">Советы</a></li>
+          <li><a href="cheat-sheet.html" class="active">Cheat Sheet</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="contacts.html">Контакты</a></li>
+        </ul>
+      </nav>
+
+      <button class="burger" aria-label="Меню">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+    <!-- Контейнер для main + aside -->
+    <div class="container layout">
+        
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <h3>Полезные ресурсы</h3>
+            <ul>
+                <li><a href="https://git-scm.com/" target="_blank">Официальная документация Git</a></li>
+                <li><a href="https://subversion.apache.org/" target="_blank">Официальная документация SVN</a></li>
+                <li><a href="https://www.atlassian.com/git/tutorials" target="_blank">Git Tutorials (Atlassian)</a></li>
+                <li><a href="https://www.youtube.com/results?search_query=git+tutorial" target="_blank">Видеоуроки Git на YouTube</a></li>
+                <li><a href="https://www.youtube.com/results?search_query=svn+tutorial" target="_blank">Видеоуроки SVN на YouTube</a></li>
+            </ul>        
+        </aside>
+
+    <main class="main">
+      <h1>Git — Cheat Sheet</h1>
+      <p>Краткий набор команд и паттернов, которые чаще всего используют в работе с Git.</p>
+
+      <section id="getting-started">
+        <h2>Начало</h2>
+        <ul>
+          <li><code>git init</code> — инициализировать репозиторий.</li>
+          <li><code>git clone &lt;url&gt;</code> — склонировать удалённый репозиторий.</li>
+          <li><code>git status</code> — текущее состояние.</li>
+          <li><code>git add .</code> — добавить все изменения в индекс.</li>
+          <li><code>git commit -m "message"</code> — зафиксировать изменения.</li>
+        </ul>
+      </section>
+
+      <section id="branching">
+        <h2>Ветки</h2>
+        <ul>
+          <li><code>git branch</code> — показать ветки.</li>
+          <li><code>git branch &lt;name&gt;</code> — создать ветку.</li>
+          <li><code>git checkout &lt;name&gt;</code> — переключиться на ветку.</li>
+          <li><code>git checkout -b &lt;name&gt;</code> — создать и переключиться.</li>
+          <li><code>git merge &lt;branch&gt;</code> — слить в текущую ветку.</li>
+          <li><code>git rebase &lt;base&gt;</code> — перенести коммиты на другую базу.</li>
+        </ul>
+      </section>
+
+      <section id="syncing">
+        <h2>Синхронизация</h2>
+        <ul>
+          <li><code>git remote -v</code> — посмотреть remotes.</li>
+          <li><code>git remote add origin &lt;url&gt;</code> — добавить удалённый.</li>
+          <li><code>git push origin &lt;branch&gt;</code> — отправить ветку.</li>
+          <li><code>git pull --rebase</code> — подтянуть и применить поверх (рекоммендовано).</li>
+          <li><code>git fetch</code> — получить обновления без слияния.</li>
+        </ul>
+      </section>
+
+      <section id="history">
+        <h2>История и откат</h2>
+        <ul>
+          <li><code>git log --oneline --graph</code> — компактный лог.</li>
+          <li><code>git diff</code> — различия незакоммиченных изменений.</li>
+          <li><code>git checkout -- &lt;file&gt;</code> — откатить файл к последнему коммиту.</li>
+          <li><code>git revert &lt;commit&gt;</code> — отмена коммита новым коммитом.</li>
+          <li><code>git reset --soft &lt;commit&gt;</code> — откат ветки, сохранив staged.</li>
+        </ul>
+      </section>
+
+      <section id="advanced">
+        <h2>Продвинуто</h2>
+        <ul>
+          <li><code>git stash</code> — временно убрать незакоммиченные изменения.</li>
+          <li><code>git stash pop</code> — вернуть сохранённые изменения.</li>
+          <li><code>git cherry-pick &lt;commit&gt;</code> — применить отдельный коммит в текущую ветку.</li>
+          <li><code>git bisect</code> — бинарный поиск регрессии.</li>
+        </ul>
+      </section>
+    </main>
+  </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Системы контроля версий | Системы контроля версий (Git, SVN).</p>
+        <p>Автор: Суровцов Е.А.</p>
+    </footer>
+
+  <script src="js/main.js"></script>
+   
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FAQ — Troubleshooting Git & SVN</title>
+
+  <!-- Water.css -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="page-faq">
+  <header class="header">
+    <div class="container header__inner">
+      <a href="index.html" class="header__logo">Системы контроля версий</a>
+      <nav class="nav">
+        <ul class="nav__list">
+          <li><a href="git.html">Git</a></li>
+          <li><a href="svn.html">SVN</a></li>
+          <li><a href="comparison.html">Сравнение</a></li>
+          <li><a href="tips.html">Советы</a></li>
+          <li><a href="cheat-sheet.html">Cheat Sheet</a></li>
+          <li><a href="faq.html" class="active">FAQ</a></li>
+          <li><a href="contacts.html">Контакты</a></li>
+        </ul>
+      </nav>
+
+      <button class="burger" aria-label="Меню">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+    <!-- Контейнер для main + aside -->
+    <div class="container layout">
+        
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <h3>Полезные ресурсы</h3>
+            <ul>
+                <li><a href="https://git-scm.com/" target="_blank">Официальная документация Git</a></li>
+                <li><a href="https://subversion.apache.org/" target="_blank">Официальная документация SVN</a></li>
+                <li><a href="https://www.atlassian.com/git/tutorials" target="_blank">Git Tutorials (Atlassian)</a></li>
+                <li><a href="https://www.youtube.com/results?search_query=git+tutorial" target="_blank">Видеоуроки Git на YouTube</a></li>
+                <li><a href="https://www.youtube.com/results?search_query=svn+tutorial" target="_blank">Видеоуроки SVN на YouTube</a></li>
+            </ul>        
+        </aside>
+
+    <main class="main">
+      <h1>Troubleshooting & FAQ</h1>
+      <p>Короткие решения типичных проблем при работе с Git и SVN.</p>
+
+      <section id="merge-conflict">
+        <h2>Merge conflict</h2>
+        <p><strong>Симптом:</strong> при merge или pull возникают конфликты.</p>
+        <p><strong>Решение (шаги):</strong></p>
+        <ol>
+          <li>Откройте конфликтующие файлы и найдите маркеры.</li>
+          <li>Разрешите изменения вручную, сохраните файл.</li>
+          <li><code>git add &lt;file&gt;</code> для каждого разрешённого файла.</li>
+          <li><code>git commit</code> чтобы завершить merge.</li>
+          <li>Если нужно откатиться: <code>git merge --abort</code> (если merge не закоммичен).</li>
+        </ol>
+      </section>
+
+      <section id="detached-head">
+        <h2>Detached HEAD</h2>
+        <p><strong>Симптом:</strong> вы находитесь не на ветке, а на конкретном коммите (HEAD detached).</p>
+        <p><strong>Решение:</strong></p>
+        <ul>
+          <li>Создайте ветку из текущего состояния: <code>git checkout -b fix-branch</code>.</li>
+          <li>Затем можно пушить новую ветку и продолжать работу.</li>
+        </ul>
+      </section>
+
+      <section id="push-error">
+        <h2>Ошибка при push (rejected)</h2>
+        <p><strong>Симптом:</strong> remote rejected push — non-fast-forward.</p>
+        <p><strong>Решение:</strong></p>
+        <ol>
+          <li><code>git pull --rebase</code> чтобы подтянуть изменения и выполнить rebase ваших коммитов.</li>
+          <li>Разрешите конфликты, затем <code>git push</code>.</li>
+          <li>Если ситуация критична и вы уверены: <code>git push --force-with-lease</code> (использовать осторожно).</li>
+        </ol>
+      </section>
+
+      <section id="large-files">
+        <h2>Большие файлы</h2>
+        <p>Git плохо справляется с большими бинарными файлами. Решение — использовать <a href="https://git-lfs.github.com/" target="_blank">Git LFS</a>.</p>
+      </section>
+
+      <section id="ssh-vs-https">
+        <h2>SSH vs HTTPS</h2>
+        <p>Если push требует логин/пароль — можно переключиться на SSH:</p>
+        <pre><code>
+            ssh-keygen -t ed25519 -C "youremail@example.com"
+            # затем добавьте публичный ключ в GitHub (Settings → SSH and GPG keys)
+        </code></pre>
+        <p>После этого используйте remote с SSH-URL: <code>git remote set-url origin git@github.com:USERNAME/REPO-NAME.git</code></p>
+      </section>
+
+      <section class="if nothing else helps">
+        <h2>Если ничего не допомогло</h2>
+        <p>Сделайте копию рабочей папки, создайте issue в репозитории с описанием шагов и выводом команд <code>git status</code> и <code>git remote -v</code> — это поможет быстрее разобраться.</p>
+      </section>
+    </main>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Системы контроля версий | Системы контроля версий (Git, SVN).</p>
+    <p>Автор: Суровцов Е.А.</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

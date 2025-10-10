@@ -1,5 +1,5 @@
 # Live Demo
-[Открыть сайт на GitHub Pages](https://github.com/realceo9/version-control-systems-site)
+[Открыть сайт на GitHub Pages](https://realceo9.github.io/version-control-systems-site/)
 
 ---
 

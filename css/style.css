@@ -1,4 +1,6 @@
-/* Header: фон, тень */
+/* --------------------------- */
+/* --- Header: фон и тень --- */
+/* --------------------------- */
 .header {
   background-color: #f8f9fa;
   padding: 20px 0;
@@ -6,50 +8,46 @@
   box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
-/* Контейнер header */
 .header__inner {
   display: flex;
-  flex-direction: column; 
-  align-items: center;  
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  width: 90%;           
-  max-width: 1200px;    
+  width: 90%;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 20px 0;   
+  padding: 20px 0;
 }
 
-/* Логотип */
 .header__logo {
   font-size: 38px;
   font-weight: 700;
   color: #333;
-  text-decoration: none; 
+  text-decoration: none;
   letter-spacing: 0.5px;
   transition: transform 0.3s ease;
   margin-bottom: 10px;
 }
 
-.header__logo:hover {       
+.header__logo:hover {
   transform: scale(1.05);
-  text-decoration: none;  
+  text-decoration: none;
 }
 
-/* Навигация */
 .nav {
   margin-top: 12px;
 }
 
 .nav__list {
   display: flex;
-  gap: 20px;          
+  gap: 20px;
   list-style: none;
   margin: 0;
   padding: 0;
-  justify-content: center; 
-  flex-wrap: wrap;     
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
-/* Ссылки навигации */
 .nav__list a {
   text-decoration: none;
   color: #333;
@@ -72,65 +70,83 @@
   font-weight: 600;
 }
 
-/* Адаптив для экранов <768px */
-@media (max-width: 768px) {
-  .header__logo {
-    font-size: 28px;
-    margin-bottom: 8px;
-  }
+/* =========================
+   === Layout: float-based обтекание (минимальная, рабочая конфигурация)
+   ========================= */
 
-  .nav__list {
-    flex-direction: column;
-    gap: 10px;
-    width: 100%;
-    align-items: center;
-  }
-
-  .nav__list a {
-    font-size: 16px;
-    padding: 8px 12px;
-  }
-}
-
-/* Изменение цвета code blocks в разделе "Основные команды Git" */
-.main code {
-  color: #74a3d4;
-  background-color: transparent;
-  padding: 0;
-  border-radius: 0;
-  font-size: 1em;
-}
-
-
-/* Контейнер для main + aside */
+/* .layout — контейнер (обычный поток, НЕ flex) */
 .layout {
-  display: flex;
-  gap: 40px;
+  /* УБРАН display:flex чтобы включить поведение float/обтекания */
   padding: 40px 0;
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  position: relative;
 }
 
-/* Main content */
-.main {
-  flex: 3;
-}
-
-/* Sidebar */
+/* Плавающий сайдбар справа — ключевое правило */
 .sidebar {
-  flex: 1;
-  background-color: #ffffff; 
+  float: right;             /* <-- обтекание: контент main будет слева от сайдбара */
+  width: 280px;             /* ширина сайдбара на десктопе (меняйте по вкусу) */
+  margin-left: 24px;        /* расстояние между main и sidebar (эквивалент gap) */
+  background-color: #ffffff;
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.08); 
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  box-sizing: border-box;
+  font-size: 15px;
+  line-height: 1.5;
 }
 
-/* Заголовок */
+/* clearfix для контейнера, чтобы он учитывал float-элемент по высоте */
+.layout::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Основной текст (main):
+   - НЕ резервируем фиксированное место справа (нет большого margin-right),
+     чтобы текст мог обтекать сайдбар и затем, когда сайдбар закончится,
+     занять всю ширину под ним. */
+.main {
+  /* убрано: flex / margin-right / width фиксированный — оставляем поведение блока */
+  line-height: 1.6;
+}
+
+/* Параграфы будут обтекать плавающий сайдбар; при нехватке места текст пойдет под сайдбар */
+.main p,
+.main ul,
+.main ol,
+.main li,
+.main blockquote {
+  text-align: justify;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+/* Если какой-то блочный элемент вы хотите принудительно начинать ПОД сайдбаром,
+   добавляйте ему класс below-sidebar (например: <section class="below-sidebar">).
+   Это полезно для цветных секций/карточек, которые должны занимать всю ширину. */
+.below-sidebar {
+  clear: right;  /* принудительно начать под правым float */
+  /* можно добавить ширину/паддинги/фон по вкусу */
+  box-sizing: border-box;
+  margin-top: 1.2rem;
+  padding: 1rem;
+  background: #f1f5f9;
+  border-radius: 8px;
+}
+
+/* --------------------------- */
+/* --- Sidebar content (сохранено) --- */
 .sidebar h3 {
   font-size: 20px;
   margin-bottom: 15px;
   color: #333;
 }
 
-/* Список ссылок */
 .sidebar ul {
   list-style: none;
   padding: 0;
@@ -150,10 +166,19 @@
 
 .sidebar a:hover {
   text-decoration: underline;
-  transform: scale(1.03); 
+  transform: scale(1.03);
 }
 
-/* Таблицы */
+/* --------------------------- */
+/* --- Code blocks, tables, video --- */
+.main code {
+  color: #74a3d4;
+  background-color: transparent;
+  padding: 0;
+  border-radius: 0;
+  font-size: 1em;
+}
+
 .table-wrapper {
   overflow-x: auto;
   margin-top: 1.5em;
@@ -166,11 +191,10 @@
   color: #b4b4b4;
 }
 
-/* Responsive video wrapper — адаптивное встраивание YouTube */
 .video-wrapper {
   position: relative;
   width: 100%;
-  padding-bottom: 56.25%; 
+  padding-bottom: 56.25%;
   height: 0;
   overflow: hidden;
   margin-top: 12px;
@@ -186,24 +210,8 @@
   border: 0;
 }
 
-/* Текст в main: выравнивание по ширине */
-.main p,
-.main ul,
-.main ol,
-.main li,
-.main blockquote {
-  text-align: justify;
-  line-height: 1.6;
-}
-
-.main__features li {
-  text-align: justify;
-  line-height: 1.4;
-}
-
+/* --------------------------- */
 /* --- Бургер-меню --- */
-
-/* Глобальное отключение подсветки и outline при фокусе / тапе */
 * {
   -webkit-tap-highlight-color: transparent;
 }
@@ -213,8 +221,8 @@
   position: relative;
   flex-direction: column;
   justify-content: space-between;
-  width: 24px;   
-  height: 20px;  
+  width: 24px;
+  height: 20px;
   background: transparent;
   border: none;
   cursor: pointer;
@@ -232,12 +240,10 @@
   box-shadow: none;
 }
 
-/* Эффект при клике */
 .burger:active {
   transform: scale(1.05);
 }
 
-/* Линии меню */
 .burger span {
   display: block;
   width: 90%;
@@ -247,7 +253,6 @@
   transition: all 0.35s ease;
 }
 
-/* Превращение в крест */
 .burger.active span:nth-child(1) {
   transform: rotate(45deg) translate(6px, 6px);
 }
@@ -258,12 +263,24 @@
   transform: rotate(-45deg) translate(6px, -6px);
 }
 
-/* --- Мобильное отображение --- */
-@media (max-width: 768px) {
+/* --------------------------- */
+/* --- Мобильное отображение (<768px) --- */
+@media (max-width: 767px) {
+  .header__logo { font-size: 28px; margin-bottom: 8px; }
+
+  .nav__list {
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    align-items: center;
+  }
+
+  .nav__list a { font-size: 16px; padding: 8px 12px; }
+
   .burger {
     display: flex;
     position: absolute;
-    top: 72px; 
+    top: 72px;
     right: 22px;
     z-index: 1001;
   }
@@ -277,49 +294,31 @@
     max-width: 320px;
     background-color: #ced0e4;
     border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.18);
     opacity: 0;
     pointer-events: none;
     transition: all 0.35s ease;
     z-index: 1000;
   }
 
-  .nav.active {
-    opacity: 1;
-    transform: translateX(-50%) translateY(0);
-    pointer-events: all;
-  }
+  .nav.active { opacity: 1; transform: translateX(-50%) translateY(0); pointer-events: all; }
+  .nav__list a:hover { background-color: rgba(0,123,255,0.08); transform: scale(1.05); }
 
-  .nav__list {
-    flex-direction: column;
-    padding: 18px 0;
-    gap: 14px;
-  }
+  body.menu-open { overflow: hidden; }
 
-  .nav__list a {
-    display: block;
-    font-size: 17px;
-    padding: 10px;
-    color: #333;
-    border-radius: 8px;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-  }
-
-  .nav__list a:hover {
-    background-color: rgba(0, 123, 255, 0.08);
-    transform: scale(1.05);
-  }
-
-  body.menu-open {
-    overflow: hidden;
-  }
+  /* На мобилке: сайдбар становится блочным и идёт перед main */
+  .sidebar { float: none; width: 100%; margin-left: 0; margin-bottom: 20px; }
+  .main { margin-right: 0; width: 100%; }
 }
 
-
-
-
-
-
-
-
-
+/* ---------------------------
+   Footer
+   --------------------------- */
+footer {
+  background-color: #ffffff;
+  color: #333;
+  padding: 20px;
+  border-top: 1px solid #e0e0e0;
+  margin-top: 30px;
+  text-align: center;
+}
